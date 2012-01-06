@@ -2570,12 +2570,14 @@ cups_parse_user_options (const char     *filename,
       if (!*lineptr)
         continue;
 
-      /* NUL-terminate the name, stripping the instance name */
+      /* NUL-terminate the name, skipp instances */
       name = lineptr;
       while (!isspace (*lineptr) && *lineptr)
         {
-          if (*lineptr == '/')
+          if (*lineptr == '/') {
             *lineptr = '\0';
+            break;
+         }
           lineptr++;
         }
 
